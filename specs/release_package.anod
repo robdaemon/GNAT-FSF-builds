@@ -55,6 +55,8 @@ class ReleasePackage(spec("common")):
         elif package == "gnat":
             if self.env.target.triplet == "arm-eabi":
                 return "2"
+            elif self.env.target.triplet == "aarch64-elf":
+                return "2"
             elif self.env.target.triplet == "riscv64-elf":
                 return "2"
             elif self.env.target.triplet == "avr-elf":
@@ -111,6 +113,13 @@ class ReleasePackage(spec("common")):
             # Note: the binutils are already merged in gcc installation
 
             if self.env.target.triplet == "arm-eabi":
+                return [
+                    Anod.Dependency("gcc", track=True),
+                    Anod.Dependency("gdb", track=True),
+                    Anod.Dependency("embedded-runtimes", track=True),
+                ]
+
+            elif self.env.target.triplet == "aarch64-elf":
                 return [
                     Anod.Dependency("gcc", track=True),
                     Anod.Dependency("gdb", track=True),

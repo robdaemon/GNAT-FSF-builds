@@ -51,6 +51,7 @@ class GCC(spec("gh-artifact")):
     def is_cross(self):
         return (
             self.env.target.triplet == "arm-eabi"
+            or self.env.target.triplet == "aarch64-elf"
             or self.env.target.triplet == "riscv64-elf"
             or self.env.target.triplet == "avr-elf"
         )
@@ -175,6 +176,10 @@ class GCC(spec("gh-artifact")):
             args += cross_commons
             args.append("--enable-multilib")
             args.append("--with-multilib-list=rmprofile")
+
+        if self.env.target.triplet == "aarch64-elf":
+            args += cross_commons
+            args.append("--enable-multilib")
 
         if self.env.target.triplet == "riscv64-elf":
             args += cross_commons

@@ -79,7 +79,10 @@ class EmbeddedRuntimes(spec("common")):
                 "rpi-pico",
                 "rpi-pico-smp"
             ]
-
+        elif self.env.target.platform == "aarch64-elf":
+            board = [
+                "rpi3"
+            ]
         elif self.env.target.platform == "riscv64-elf":
             board = [
                 "spike",
@@ -106,6 +109,8 @@ class EmbeddedRuntimes(spec("common")):
     def rts_root_dir(self):
         if self.env.target.platform == "arm-elf":
             return "arm-eabi"
+        elif self.env.target.platform == "aarch64-elf":
+            return "aarch64-elf"
         elif self.env.target.platform == "riscv64-elf":
             return "riscv64-elf"
         else:
