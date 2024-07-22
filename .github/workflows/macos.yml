@@ -99,7 +99,7 @@ jobs:
   gnat_cross:
     strategy:
       matrix:
-        target: ["arm-elf", "riscv64-elf", "avr-elf"]
+        target: ["arm-elf", "aarch64-elf", "riscv64-elf", "avr-elf"]
     name: GNAT ${{ matrix.target }}-darwin
     needs: gnat_gprbuild
     runs-on: macos-12

@@ -1,6 +1,30 @@
 # GNAT-FSF-builds
 Builds of the GNAT Ada compiler from FSF GCC releases
 
+# Notes on this fork
+
+This fork adds the aarch64-elf target with a rpi3 runtime.
+
+## How to build this fork
+
+To start the builds you will need `python3` and the `e3-core` package.
+This can be done in a virtual env, e.g.:
+```console
+$ python3 -m venv my-virtual-env
+$ source my-virtual-env/bin/activate
+$ pip install e3-core==22.1.0
+```
+
+Now, to build the cross-compiler:
+
+```console
+$ ./anod build release_package --qualifier=package=gnat --target=aarch64-elf  -v --loglevel DEBUG
+```
+
+This will generate a tarball at `./sbx/aarch64-elf-linux64/release_package-gnat-aarch64-elf-linux64/install` that
+includes the compiler, gdb, and the `embedded-rpi3`, `light-rpi3` and `light-tasking-rpi3` RTSes, but does not include
+`gprbuild` or other components.
+
 # How to build
 
 To start the builds you will need `python3` and the `e3-core` package.
