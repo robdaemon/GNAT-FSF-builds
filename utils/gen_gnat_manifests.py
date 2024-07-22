@@ -20,7 +20,7 @@ targets = {
 
 
 def check_sha256(package):
-    base_url = f"https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/"
+    base_url = f"https://github.com/robdaemon/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/"
     pkg_url = base_url + package
     sha_file = package + ".sha256"
     sha_url = base_url + sha_file
@@ -88,15 +88,15 @@ disabled = true
 PATH.prepend = "${{CRATE_ROOT}}/bin"
 
 [origin."case(os)".linux."case(host-arch)".x86-64]
-url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/{linux_package}"
+url = "https://github.com/robdaemon/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/{linux_package}"
 hashes = ["sha256:{linux_sha256}"]
 
 [origin."case(os)".windows."case(host-arch)".x86-64]
-url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/{windows_package}"
+url = "https://github.com/robdaemon/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/{windows_package}"
 hashes = ["sha256:{windows_sha256}"]
 
 [origin."case(os)".macos."case(host-arch)".x86-64]
-url = "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/{macos_package}"
+url = "https://github.com/robdaemon/GNAT-FSF-builds/releases/download/gnat-{PKG_VERSION}/{macos_package}"
 hashes = ["sha256:{macos_sha256}"]
 """
 
