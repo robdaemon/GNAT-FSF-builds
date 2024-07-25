@@ -9,6 +9,7 @@ This fork adds the aarch64-elf target with a rpi3 runtime.
 
 To start the builds you will need `python3` and the `e3-core` package.
 This can be done in a virtual env, e.g.:
+
 ```console
 $ python3 -m venv my-virtual-env
 $ source my-virtual-env/bin/activate
@@ -24,6 +25,21 @@ $ ./anod build release_package --qualifier=package=gnat --target=aarch64-elf  -v
 This will generate a tarball at `./sbx/aarch64-elf-linux64/release_package-gnat-aarch64-elf-linux64/install` that
 includes the compiler, gdb, and the `embedded-rpi3`, `light-rpi3` and `light-tasking-rpi3` RTSes, but does not include
 `gprbuild` or other components.
+
+## Installing the AArch64 toolchain
+
+You'll want to extract this tarball from the previous section somewhere, something like `$HOME/arm`, and then add it
+to your `PATH`, like the following:
+
+```console
+$ mkdir $HOME/arm
+$ cd $HOME/arm
+$ tar xf $HOME/src/GNAT-FSF-builds/sbx/aarch64-elf-linux64/release_package-gnat-aarch64-elf-linux64/install/gnat-aarch64-elf-linux64-14.1.0-2.tar.gz
+$ cd gnat-aarch64-elf-linux64-14.1.0-2/bin/
+$ ln -s aarch64-elf-gcc aarch64-elf-gnatgcc
+```
+
+That last `ln` command is required because `gprconfig` will look for `aarch64-elf-gnatgcc`
 
 # How to build
 
