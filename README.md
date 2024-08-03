@@ -16,6 +16,16 @@ $ source my-virtual-env/bin/activate
 $ pip install e3-core==22.1.0
 ```
 
+It is suggested you build gprbuild / gprconfig via this repository also, on Ubuntu 24.04 the `gprbuild` package is an
+older version that will not properly recognize the toolchain.
+
+```console
+$ ./anod build release_package --qualifier=package=gprbuild --target=aarch64-elf  -v --loglevel DEBUG
+```
+
+This will generate the tarball at `./sbx/x86_64-linux/release_package-gprbuild-x86_64-linux/install/gprbuild-x86_64-linux-24.0.0-1.tar.gz`
+that includes `gprbuild` and `gprconfig` and other tools. 
+
 Now, to build the cross-compiler:
 
 ```console
@@ -35,11 +45,7 @@ to your `PATH`, like the following:
 $ mkdir $HOME/arm
 $ cd $HOME/arm
 $ tar xf $HOME/src/GNAT-FSF-builds/sbx/aarch64-elf-linux64/release_package-gnat-aarch64-elf-linux64/install/gnat-aarch64-elf-linux64-14.1.0-2.tar.gz
-$ cd gnat-aarch64-elf-linux64-14.1.0-2/bin/
-$ ln -s aarch64-elf-gcc aarch64-elf-gnatgcc
 ```
-
-That last `ln` command is required because `gprconfig` will look for `aarch64-elf-gnatgcc`
 
 # How to build
 
