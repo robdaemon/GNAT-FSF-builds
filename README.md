@@ -16,11 +16,17 @@ $ source my-virtual-env/bin/activate
 $ pip install e3-core==22.1.0
 ```
 
+If your Linux distribution is using Python 3.12 or greater, the distutils module is not available by default, so you'll want to install that:
+
+```
+$ pip install setuptools
+```
+
 It is suggested you build gprbuild / gprconfig via this repository also, on Ubuntu 24.04 the `gprbuild` package is an
 older version that will not properly recognize the toolchain.
 
 ```console
-$ ./anod build release_package --qualifier=package=gprbuild --target=aarch64-elf  -v --loglevel DEBUG
+$ ./anod build release_package --qualifier=package=gprbuild -v --loglevel DEBUG
 ```
 
 This will generate the tarball at `./sbx/x86_64-linux/release_package-gprbuild-x86_64-linux/install/gprbuild-x86_64-linux-24.0.0-1.tar.gz`
